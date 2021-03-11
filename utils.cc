@@ -261,7 +261,7 @@ int do_IO( string io_action, vector<string> paths, int thread_count, int chunk_s
     }
 
     cout << "IOAction: "<<io_action << "\n"
-         << "Chuck_size: " << chunk_size << " K\n"
+         << "Chunk_size: " << chunk_size << " K\n"
          << "Total_IO: "<< total_io << " MB\n"
          << "Total_Time_Taken: " << total_time_taken << "s\n"
          << "Threads: " << thread_count << "\n"
@@ -269,7 +269,7 @@ int do_IO( string io_action, vector<string> paths, int thread_count, int chunk_s
          << "Overrall_Throughput: " << overall_throughput << " MB/s\n";
 
     for( int i=0; i<thread_count; i++){
-        cout <<"Thread " << i << "Throughput: " << throughput[i] << " MB/s";
+        cout <<"Thread " << i << " Throughput: " << throughput[i] << " MB/s";
         if( i < thread_count - 1 ) cout <<"\n";
     }
     cout << "\n";
