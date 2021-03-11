@@ -260,25 +260,25 @@ int do_IO( string io_action, vector<string> paths, int thread_count, int chunk_s
         throughput.push_back(total_io_done_this_thread/jobs[i].elapsed_time);
     }
 
-    cout << io_action << ","
-         << chunk_size << ","
-         << total_io << ","
-         << total_time_taken << ","
-         << thread_count << ","
-         << paths.size() << ","
-         << overall_throughput << ",";
-    
+    cout << "IOAction: "<<io_action << "\n"
+         << "Chuck_size: " << chunk_size << " K\n"
+         << "Total_IO: "<< total_io << " MB\n"
+         << "Total_Time_Taken: " << total_time_taken << "s\n"
+         << "Threads: " << thread_count << "\n"
+         << "Path:" << paths.size() << "\n"
+         << "Overrall_Throughput: " << overall_throughput << " MB/s\n";
+
     for( int i=0; i<thread_count; i++){
-        cout << throughput[i] ;
-        if( i < thread_count - 1 ) cout <<"-";
+        cout <<"Thread " << i << "Throughput: " << throughput[i] << " MB/s";
+        if( i < thread_count - 1 ) cout <<"\n";
     }
-    cout << ",";
+    cout << "\n";
     for( int i=0; i<thread_count; i++){
-    	for(int j = 0; j < jobs[i].block_names.size(); j++){
-    		cout << jobs[i].block_names[j] ;
-    		if( j < jobs[i].block_names.size()) cout << ":";
-    	}
-    	if( i < thread_count - 1) cout << "-";
+        for(int j = 0; j < jobs[i].block_names.size(); j++){
+                cout << jobs[i].block_names[j] ;
+                if( j < jobs[i].block_names.size()) cout << "\n";
+        }
+        if( i < thread_count - 1) cout << "\n";
     }
 
     cout << endl;
